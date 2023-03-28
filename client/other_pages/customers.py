@@ -16,7 +16,6 @@ import pymongo
 import requests
 import pandas as pd
 from bson.json_util import dumps
-import plotly.graph_objs as go
 import pycountry_convert as pc
 import pycountry
 

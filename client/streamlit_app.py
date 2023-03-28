@@ -11,12 +11,9 @@ import yaml
 from streamlit_option_menu import option_menu
 from datetime import datetime
 import pymongo
-import pymongo
 import requests
-import pandas as pd
 from bson.json_util import dumps
 import json
-import plotly.graph_objs as go
 import pycountry_convert as pc
 import pycountry
 from st_pages import Page, show_pages, add_page_title

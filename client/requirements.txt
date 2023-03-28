@@ -1,0 +1,12 @@
+pandas
+streamlit
+requests
+plotly.express
+plotly.graph_objects
+base64
+pathlib
+streamlit_authenticator
+yaml
+pymongo
+pycountry
+pycountry_convert
