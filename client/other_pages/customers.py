@@ -20,6 +20,8 @@ import plotly.graph_objs as go
 import pycountry_convert as pc
 import pycountry
 
+st.image("hm-symbol-logo.png", width=100)
+
 
 st.subheader('Customers')
 

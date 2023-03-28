@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import json
 import plotly.express as px
 
+st.image("hm-symbol-logo.png", width=100)
 
 
 st.subheader('Articles')

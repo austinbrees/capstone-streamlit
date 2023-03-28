@@ -7,6 +7,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import altair as alt
 
+st.image("hm-symbol-logo.png", width=100)
 
 
 st.subheader('Transactions')
