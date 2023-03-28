@@ -8,6 +8,7 @@ import pymongo
 from pymongo import MongoClient
 from bson.json_util import dumps
 from flask_restx import Api, Namespace, Resource, reqparse
+import json
 
 
 load_dotenv()
@@ -24,7 +25,7 @@ api = Api(app)
 
 
 limit_parser = reqparse.RequestParser()
-limit_parser.add_argument('limit', type=int, default=200)
+limit_parser.add_argument('limit', type=int, default=10000)
 
 try:
     client =  pymongo.MongoClient(
@@ -33,6 +34,12 @@ try:
     db = client[MONGO_DATABASE]
 except pymongo.errors.ConnectionFailure as e:
     print("Failed to connect to MongoDB instance: %s" % e)
+    
+def convert_id_to_str(data_dicts):
+    for data_dict in data_dicts:
+        if '_id' in data_dict:
+            data_dict['_id'] = str(data_dict['_id']['$oid'])
+    return data_dicts
 
 class Articles(Resource):
     def get(self):
@@ -40,8 +47,9 @@ class Articles(Resource):
         limit = args['limit']
         collection = db['articles']
         data = collection.find().limit(limit)
-        data_json = dumps(data)
-        return jsonify(data_json), 200
+        data_dicts = json.loads(dumps(data))
+        data_dicts = convert_id_to_str(data_dicts)
+        return data_dicts, 200
 
 class Transactions(Resource):
     def get(self):
@@ -49,8 +57,9 @@ class Transactions(Resource):
         limit = args['limit']
         collection = db['transactions']
         data = collection.find().limit(limit)
-        data_json = dumps(data)
-        return jsonify(data_json), 200
+        data_dicts = json.loads(dumps(data))
+        data_dicts = convert_id_to_str(data_dicts)
+        return data_dicts, 200
 
 class Customers(Resource):
     def get(self):
@@ -58,8 +67,9 @@ class Customers(Resource):
         limit = args['limit']
         collection = db['customers']
         data = collection.find().limit(limit)
-        data_json = dumps(data)
-        return jsonify(data_json), 200
+        data_dicts = json.loads(dumps(data))
+        data_dicts = convert_id_to_str(data_dicts)
+        return data_dicts, 200
 
 api.add_resource(Articles, "/api/articles")
 api.add_resource(Transactions, "/api/transactions")
