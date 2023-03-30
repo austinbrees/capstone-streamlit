@@ -3,7 +3,7 @@
 
 The KPI Dashboard is a Streamlit web application designed to provide insights into various Key Performance Indicators (KPIs) related to sales transactions, customers, and articles. The application fetches data from an API and visualizes the KPIs using Plotly charts.
 
-Link to site: https://frontend-dot-directed-racer-376415.oa.r.appspot.com/
+Link to site: https://frontend-dot-elite-campus-381410.oa.r.appspot.com/
 
 
 ## **Technologies Used**
